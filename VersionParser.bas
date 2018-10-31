@@ -14,7 +14,7 @@ Function VER2NUM(version As String)
    For Each revisionsegmentvalue In versionsplit
    'NB: VBA arrays start from 0
    
-   versioninteger = versioninteger + (revisionsegmentvalue * (2 ^ ((runtime * -1) + 1 - (9 * (runtime - 1)))))
+   versioninteger = versioninteger + (revisionsegmentvalue * (2 ^ ((runtime * -1) + 1 - (10 * (runtime - 1)))))
    runtime = runtime + 1
    Next
    
@@ -22,13 +22,13 @@ Function VER2NUM(version As String)
 End Function
 
 Function NUM2VER(number As Double)
-    Dim versionarray(0) As String
+    Dim versionarray() As String
     Dim revisionsegmentvalue As Integer
     i = 0
     Do While number > 0
     ReDim Preserve versionarray(i)
     versionarray(i) = CStr(Round(number))
-    number = (number - Round(number)) * (2 ^ 10)
+    number = (number - Round(number)) * (2 ^ 11)
     i = i + 1
     Loop
     
