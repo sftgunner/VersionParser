@@ -10,8 +10,10 @@ In fact, it's (slightly) cleverer than it sounds, as simply parsing 1.2.3 into 1
 
 As hinted by the previous sentence, VersionParser (or VER2NUM as the function is labelled) can also cope with versioning levels beyond the typical Major.Minor.Patch format.
 
+In fact, I've even added a NUM2VER to reverse the process! This spurred on the change from powers of 10 to powers of 2 that are used, to avoid floating point errors.
+
 ## Limitations
-Aside from the bad formatting/layout/practices that I've presumably used (It's my first bit of VBA... give me a break!), VersionParser won't be able to cope with any version numbers greater than 1 million. If, for whatever bizarre reason, you need to increase this limit, it's relatively simple to do - just change the 5 on line 17 to a 6 or a 7 for flexibility of over 10 million revisions!
+Aside from the bad formatting/layout/practices that I've presumably used (It's my first bit of VBA... give me a break!), VersionParser won't be able to cope with any version numbers greater than 1022. If, for whatever bizarre reason, you need to increase this limit, it's relatively simple to do - just change the 9 on line 17 and 10 on line 31 to a 19/20 or even more for flexibility of over 1 million revisions!
 
 Also, yes, I realise I really ought to comment more.
 
