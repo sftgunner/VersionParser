@@ -12,7 +12,7 @@ As hinted by the previous sentence, VersionParser (or VER2NUM as the function is
 
 In fact, I've even added a NUM2VER to reverse the process! This spurred on the change from powers of 10 to powers of 2 that are used, to avoid floating point errors.
 
-I've now (sortof) fixed one of the limitations - precision is now editable by the user, allowing the flexibility to focus on either depth (e.g. 1.2.3.4.5.6.7.8.9) or breadth (e.g. 45.102048.17842). Higher "precision"* equates to higher breadth - so a "precision" of 5 allows for 2^5 revisions per subversion, but due to the space required for this higher precision, you will only be able to use a depth of <img src="https://latex.codecogs.com/gif.latex?log_{2^5}(1.099\times10^{12})" title="log_{2^5}(1.099\times10^{12})" /> = 8 subversions before the resolution is affected, and you can't convert the number back again.
+I've now (sortof) fixed one of the limitations - precision is now editable by the user, allowing the flexibility to focus on either depth (e.g. 1.2.3.4.5.6.7.8.9) or breadth (e.g. 45.102048.17842). Higher "precision"* equates to higher breadth - so a "precision" of 5 allows for 2^5 revisions per subversion, but due to the space required for this higher precision, you will only be able to use a depth of <img src="https://render.githubusercontent.com/render/math?math=log_{2^5}(1.099\times10^{12})&mode=display" title="log_{2^5}(1.099\times10^{12})" /> = 8 subversions before the resolution is affected, and you can't convert the number back again.
 
 *If you can come up with a better name for this than "precision", please do open a pull request/issue! I realise the terminology is somewhat confusing - I will update this README if I can work out the correct terminology to be used.
 
