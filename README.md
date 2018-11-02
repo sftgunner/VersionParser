@@ -1,7 +1,7 @@
 # VersionParser
 
 ## The problem
-Excel can't sort a table based on a version number in the format #.#.#(.#.#.#...etc) properly, as this isn't a recognised format. The closest it can do is sort the values bsed on their string values, meaning that 1.2.11 is interpreted as being less than 1.2.2.
+Excel can't sort a table based on a version number in the format #.#.#(.#.#.#...etc) properly, as this isn't a recognised format. The closest it can do is sort the values based on their string values, meaning that 1.2.11 is (incorrectly) interpreted as being less (or an older version) than 1.2.2.
 
 ## The solution
 Write a bit of VBA that parses the version number string into a floating point number.
@@ -12,8 +12,12 @@ As hinted by the previous sentence, VersionParser (or VER2NUM as the function is
 
 In fact, I've even added a NUM2VER to reverse the process! This spurred on the change from powers of 10 to powers of 2 that are used, to avoid floating point errors.
 
+I've now (sortof) fixed one of the limitations - precision is now editable by the user, allowing the flexibility to focus on either depth (e.g. 1.2.3.4.5.6.7.8.9) or breadth (e.g. 45.102048.17842). Higher "precision"* equates to higher breadth - so a "precision" of 5 allows for 2^5 revisions per subversion, but due to the space required for this higher precision, you will only be able to use a depth of log_(2^5)(1.099e+12) = 8 subversions before the resolution is affected, and you can't convert the number back again.
+
+*If you can come up with a better name for this than "precision", please do open a pull request/issue! I realise the terminology is somewhat confusing - I will update this README if I can work out the correct terminology to be used.
+
 ## Limitations
-Aside from the bad formatting/layout/practices that I've presumably used (It's my first bit of VBA... give me a break!), VersionParser won't be able to cope with any version numbers greater than 1022. If, for whatever bizarre reason, you need to increase this limit, it's relatively simple to do - just change the 9 on line 17 and 10 on line 31 to a 19/20 or even more for flexibility of over 1 million revisions!
+Aside from the bad formatting/layout/practices that I've presumably used in what is my first bit of VBA, due to limitations in excel, the maximum total revisions = ~1.099 trillion subversions, which can be configured in a variety of formats. However, please remember that you can have an unlimited number of releases/top-level versions. This is unaffected by the precision setting.
 
 Also, yes, I realise I really ought to comment more.
 
