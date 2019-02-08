@@ -17,7 +17,7 @@ I've now (sortof) fixed one of the limitations - precision is now editable by th
 *If you can come up with a better name for this than "precision", please do open a pull request/issue! I realise the terminology is somewhat confusing - I will update this README if I can work out the correct terminology to be used.
 
 ## Limitations
-Aside from the bad formatting/layout/practices that I've presumably used in what is my first bit of VBA, due to limitations in excel, the maximum total revisions = ~1.099 trillion subversions, which can be configured in a variety of formats. However, please remember that you can have an unlimited number of releases/top-level versions. This is unaffected by the precision setting.
+Aside from the bad formatting/layout/practices that I've presumably used in what is my first bit of VBA, due to limitations in excel, the maximum total revisions = ~1.099 trillion (2^40) subversions, which can be configured in a variety of formats. However, please remember that you can have an unlimited number of releases/top-level versions. This is unaffected by the precision setting.
 
 Also, yes, I realise I really ought to comment more.
 
