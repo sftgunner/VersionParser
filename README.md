@@ -10,7 +10,7 @@ VersionParser contains two functions - VER2NUM and NUM2VER. Both accept up to tw
 
 Simply parsing 1.2.3 into 1.23 wouldn't work with any revision numbers greater than 10 (as 1.2.11 -> 1.31 rather than 1.211). Additionally, even if it did parse into 1.211, it would be impossible to tell whether the original version was 1.2.11 or 1.21.1. This issue is further complicated when you consider versions involving subversions beyond the typical major.minor.patch format.
 
-The original solution was to assign a certain number of decimal places to each subversion, with 'precision' denoting how many decimal placed were assigned to each subversion - so for a precision of 3, the version xxx.yyy.zzz would be assigned to the number xxx.yyyzzz. For example 20.1.23.4 would be assigned as 20.001023004.
+The original solution was to assign a certain number of decimal places to each subversion, with 'precision' denoting how many decimal places were assigned to each subversion - so for a precision of 3, the version xxx.yyy.zzz would be assigned to the number xxx.yyyzzz. For example 20.1.23.4 would be assigned as 20.001023004.
 
 Mathematically speaking, each subversion would undergo the following process:
 ```
