@@ -53,36 +53,36 @@ The following equation in combination with the restrictions below can be used to
 
 <img src="https://render.githubusercontent.com/render/math?math=m=2^{53-(v(n%2B1))}-1&mode=display" title="m=2^{53-(v(n+1))}-1" />
 
-#### Restrictions
+### Restrictions
 
 <img src="https://render.githubusercontent.com/render/math?math=v\geq0&mode=display" title="v>=0" />
 
 For v to be valid, m must be either greater than 0, or equal to -0.5 (the latter being an edge case where major revision number can = 0).
 
-The major revision number must in all cases be less than 999,999,999,999,999 (1E+15), as excel cannot process any more than 15 digits of precision when performing calculations (in accordance with the IEEE 754 floating-point standard).
+The major revision number must in all cases be less than 999,999,999,999,999 (1E+15), as excel cannot process any more than 15 digits of precision when performing calculations (in accordance with the [IEEE 754 floating-point standard](https://en.wikipedia.org/wiki/IEEE_754)).
 
 <img src="https://render.githubusercontent.com/render/math?math=n\lt52&mode=display" title="n<52" />
 
 n (the revision precision value) must be less than 52, else VersionParser will be unable to process any subversions.
 
-#### Default restrictions
+### Default restrictions
 
 For the default revision precision value (n) of 4, this will result in the following restrictions:
 
 Maximum revision number = 15 (i.e. no subversions can be greater than revision 15 - e.g. 6.15.2 would be valid whilst 1.14.19 would be invalid (as 19 > 15).
 
-Maximum major revision number | Number of Subversions
----|---
-7|10
-255|9
-8191|8
-262143|7
-8388607|6
-268435455|5
-8589934591|4
-274877906943|3
-8796093022207|2
-281474976710655|1
+Maximum major revision number | Number of Subversions | Final parseable version number
+---|---|---
+7|10|7.15.15.15.15.15.15.15.15.15.15
+255|9|255.15.15.15.15.15.15.15.15.15
+8191|8|8191.15.15.15.15.15.15.15.15
+262143|7|262143.15.15.15.15.15.15.15
+8388607|6|8388607.15.15.15.15.15.15
+268435455|5|268435455.15.15.15.15.15
+8589934591|4|8589934591.15.15.15.15
+274877906943|3|274877906943.15.15.15
+8796093022207|2|8796093022207.15.15
+281474976710655|1|281474976710655.15
 
 ## Recommended settings
 If you only want to parse versions following the standard major.minor.patch format, the following precision values will equate to the following maximum values.
