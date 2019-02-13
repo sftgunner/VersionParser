@@ -38,26 +38,32 @@ Unless otherwise specified, precision will default to 4.
 
 ## Limitations
 The relationship between the maximum values for the following variables can be found below.
-```
-r = The maximum revision number (i.e. the greatest value a subversion can take. NB: This is different from the maximum major revision number.).
 
-m = The maximum major revision number (i.e. the greatest value the major revision number (4 in 4.2.3 or 1 in 1.6.2) can take).
+`r = The maximum revision number`  
+(i.e. the greatest value a subversion can take. NB: This is different from the maximum major revision number.).
 
-v = The number of subversions (where 1.3.2 has 2 subversions, and 4.1.3.6.1 has 4 subversions).
+`m = The major revision number`  
+(i.e. the first number in the version (4 in 4.2.3 or 1 in 1.6.2)).
 
-n = The revision precision (the somewhat arbitrary variable mentioned above to switch between depth and breadth of subversions).
+`m_max = The maximum major revision number`  
+(i.e. the greatest value the major revision number (4 in 4.2.3 or 1 in 1.6.2) can take).
 
-The maximum major revision (i.e. the first number in the version - x.0.0).
-```
+`v = The number of subversions`  
+(where 1.3.2 has 2 subversions, and 4.1.3.6.1 has 4 subversions).
+
+`n = The revision precision`  
+(the somewhat arbitrary variable mentioned above to switch between depth and breadth of subversions).
+
+
 The following equation in combination with the restrictions below can be used to calculate whether VersionParser will be able to parse the version number correctly.
 
-<img src="https://render.githubusercontent.com/render/math?math=m=2^{53-(v(n%2B1))}-1&mode=display" title="m=2^{53-(v(n+1))}-1" />
+<img src="https://render.githubusercontent.com/render/math?math=m_\text{max}=2^{53-(v(n%2B1))}-1&mode=display" title="m_\text{max}=2^{53-(v(n+1))}-1" />
 
 ### Restrictions
 
-<img src="https://render.githubusercontent.com/render/math?math=v\geq0&mode=display" title="v>=0" />
+<img src="https://render.githubusercontent.com/render/math?math=m_\text{max}\geq0&mode=display" title="m_\text{max}>=0" /> OR <img src="https://render.githubusercontent.com/render/math?math=m_\text{max}=-\frac{1}{2}&mode=display" title="m_\text{max}=-1/2" />
 
-For v to be valid, m must be either greater than 0, or equal to -0.5 (the latter being an edge case where major revision number can = 0).
+For v to be valid, m<sub>max</sub> must be either greater than 0, or equal to -0.5 (the latter being an edge case where major revision number can = 0).
 
 The major revision number must in all cases be less than 999,999,999,999,999 (1E+15), as excel cannot process any more than 15 digits of precision when performing calculations (in accordance with the [IEEE 754 floating-point standard](https://en.wikipedia.org/wiki/IEEE_754)).
 
@@ -71,7 +77,7 @@ For the default revision precision value (n) of 4, this will result in the follo
 
 Maximum revision number = 15 (i.e. no subversions can be greater than revision 15 - e.g. 6.15.2 would be valid whilst 1.14.19 would be invalid (as 19 > 15).
 
-Maximum major revision number | Number of Subversions | Final parseable version number
+Maximum major revision number (m<sub>max</sub>) | Number of Subversions (v) | Final parseable version number
 ---|---|---
 7|10|7.15.15.15.15.15.15.15.15.15.15
 255|9|255.15.15.15.15.15.15.15.15.15
@@ -89,7 +95,7 @@ If you only want to parse versions following the standard major.minor.patch form
 
 If you are unsure what precision value you should choose for major.minor.patch, n=16 is the recommended value.
 
-Revision Precision (n) | Maximum Major revision number (m) | Maximum revision number (r) | Total number of processable revisions | Final parseable version number
+Revision Precision (n) | Maximum Major revision number (m<sub>max</sub>) | Maximum revision number (r) | Total number of processable revisions | Final parseable version number
 ---|---|---|---|---
 2|140737488355327|3|140737488355333|140737488355327.3.3
 3|35184372088831|7|35184372088845|35184372088831.7.7
