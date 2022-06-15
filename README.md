@@ -22,7 +22,7 @@ p = position of subversion (where 3 in 1.6.4.3 would be in position 4)
 
 n = revision precision
 ```
-<img src="https://render.githubusercontent.com/render/math?math=i=i%2B(x(10^{(-p)%2B1-(n(p-1))}))&mode=display" title="i=i+(x*(10^((p*-1)+1-(n*(p-1)))))" />
+$$i=i+(x*(10^((p*-1)+1-(n*(p-1)))))$$
 
 However, once I started to code a function to reverse this process, NUM2VER, I quickly ran into issues with floating-point arithmetic. To get around this issue, I simply modified the program so that instead of using powers of 10 to encode the version into a number, it uses powers of 2 instead. 
 
@@ -61,13 +61,13 @@ The following equation in combination with the restrictions below can be used to
 
 ### Restrictions
 
-<img src="https://render.githubusercontent.com/render/math?math=m_\text{max}\geq0&mode=display" title="m_\text{max}>=0" /> OR <img src="https://render.githubusercontent.com/render/math?math=m_\text{max}=-\frac{1}{2}&mode=display" title="m_\text{max}=-1/2" />
+$m_\text{max}>=0$ OR $m_\text{max}=-1/2$
 
 For v to be valid, m<sub>max</sub> must be either greater than 0, or equal to -0.5 (the latter being an edge case where major revision number can = 0).
 
 The major revision number must in all cases be less than 999,999,999,999,999 (1E+15), as excel cannot process any more than 15 digits of precision when performing calculations (in accordance with the [IEEE 754 floating-point standard](https://en.wikipedia.org/wiki/IEEE_754)).
 
-<img src="https://render.githubusercontent.com/render/math?math=n\lt52&mode=display" title="n<52" />
+$n<52$
 
 n (the revision precision value) must be less than 52, else VersionParser will be unable to process any subversions.
 
